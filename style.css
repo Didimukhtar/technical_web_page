@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Space+Grotesk&display=swap");
+
+html,
+body {
+  min-width: 290px;
+  color: #000;
+  background-color: rgba(232, 231, 236, 0.902);
+  font-family: "Space Grotesk", sans-serif;
+  line-height: 1.5;
+}
+
+#navbar {
+  position: fixed;
+  min-width: 290px;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+  height: 100%;
+  border-right: solid;
+  border-color: rgba(0, 22, 22, 0.4);
+}
+img {
+  text-align: center;
+  width: 20%;
+  margin: auto;
+}
+
+h3 {
+  margin: 1px !important;
+  text-decoration: underline;
+}
+.icons {
+  width: 25px;
+  height: 25px;
+}
+
+header {
+  color: #000;
+  margin: 10px;
+  text-align: center;
+  font-size: 1.8em;
+}
+
+#main_doc header {
+  text-align: left;
+  margin: 0px;
+}
+
+#navbar ul {
+  height: 90%;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#navbar li {
+  color: #000;
+  border-top: 1px solid;
+  list-style: none;
+  position: relative;
+  width: 100%;
+}
+
+#navbar a {
+  display: block;
+  padding: 10px 30px;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#main_doc {
+  position: absolute;
+  margin-left: 310px;
+  padding: 20px;
+  margin-bottom: 110px;
+}
+
+section article {
+  color: #000;
+  margin: 15px;
+  font-size: 1em;
+}
+
+section li {
+  margin: 15px 0px 0px 20px;
+}
+
+code {
+  display: block;
+  text-align: left;
+  white-space: pre-line;
+  position: relative;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 2;
+  background-color: #85e754a9;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 815px) {
+  #navbar ul {
+    border: 1px solid;
+    height: 177px;
+  }
+
+  #navbar {
+    background-color: rgba(232, 231, 236, 0.902);
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-height: 400px;
+    border: none;
+    z-index: 1;
+    border-bottom: 2px solid;
+  }
+
+  #main_doc {
+    position: relative;
+    margin-left: 0px;
+    margin-top: 395px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #main_doc {
+    margin-left: -10px;
+  }
+
+  code {
+    margin-left: -20px;
+    width: 100%;
+    padding: 15px;
+    padding-left: 10px;
+    padding-right: 45px;
+    min-width: 233px;
+  }
+}
