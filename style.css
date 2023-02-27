@@ -2,6 +2,149 @@
   margin:0;
   padding:0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
+
 /* ||||||||||||||||||||| Add CSS code under this line |||||||||||||||||||| */
+
+body{
+    color: #4d4e53;
+    background-color: #ffffff;
+    line-height: 1.5;
+    display: flex;
+    min-height: 100vw;
+}
+
+
+#navbar {
+  position: relative;
+  min-width: 290px;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+  height: 100%;
+  border-right:thick;
+  border-color: rgba(0, 22, 22, 0.4);
+  border-bottom: 2px solid black;
+  z-index: 1;
+}
+
+
+#navbar ul{
+  height:70%;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}  
+
+#navbar li {
+  background-color: #ffffff;
+  border-top: 1px solid black;
+  list-style: none;
+  position: relative;
+  width: auto;
+}
+
+#navbar a {
+  display: block;
+  padding: 10px 20px;
+  color:  black;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 15px;
+  
+}
+
+#navbar a:hover {
+  font-weight: 400;
+  text-indent: 5px;
+  transition: font-weight 3s ease-in-out;
+}
+
+header {
+  color: #1E90FF;
+  margin:10px;
+  text-align:center;
+  font-size: 1.8em;
+  font-weight: thin;
+}
+
+#main_doc {
+  position: relative;
+  margin-left: 300px;
+  padding: 20px;
+  margin-bottom: 100px;
+  font-size: 16px;
+  z-index: 3;
+  background-color: antiquewhite;
+}
+
+#main_doc header {
+  text-align: left;
+  margin: 0px;
+}
+
+code {
+    display:block;
+    text-align: left;
+    white-space: pre;
+    position: relative;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 2;
+    background-color:#f7f7f7;
+    padding:15px;
+    margin:10px;
+    border-radius:5px;
+}
+
+section article {
+  margin: 15px;
+  font-size: 0.96em;
+}
+
+section li {
+  margin:15px 0px 0px 20px;
+}
+
+img {
+  width: 90%;
+}
+
+@media only screen and (min-width: 720px) {
+  #navbar {
+    position: fixed;
+    min-width: 290px;
+    top: 0px;
+    left: 0px;
+    width: 300px;
+    height: 100%;
+    border-right: solid;
+    border-color: rgba(0, 22, 22, 0.4);
+    border-bottom: 2px solid black;
+  }
+}
+
+@media only screen and (max-width: 486px) {
+  html, body {
+    overflow-x:hidden;
+  }
+
+  #navbar {
+    display: none;
+    position: sticky;
+    height: 80px;
+  }
+  
+
+  #main_doc {
+    position: relative;
+    margin-left: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    
+  }
+}
+
+

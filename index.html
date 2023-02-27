@@ -5,17 +5,226 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+  <title>Javascript runtime (NODEJS)</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- ||||||||| Add css external style sheet link tag here |||||||||||||| -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- ||||||||||||| Add HTML Code uder this line |||||||||||| -->
-  <h1>Under construction...waiting for a developer to build and design me. 🚧</h1>
-</body>
+  <!-- ||||||||||||| Add HTML Code under this line |||||||||||| -->
+  
+  <div class="navbar" onscroll="">
+    <nav id="navbar">
+    <header> Node.js as a javascript runtime </header>
+    <a href="#Introduction" class="nav-link"><li>Introduction</li></a>
+    <a href="#Non-blocking_in_node" class="nav-link"><li>Non-blocking in node</li></a>
+    <a href="#Asynchronous_programming" class="nav-link"><li>Asynchronous programming</li></a>
+    <a href="#Event_loop" class="nav-link"><li>Event loop</li></a>
+    <a href="#Package_management" class="nav-link"><li>Package management</li></a>
+    <a href="#Is_nodejs_different_from_web_javascript" class="nav-link"><li>Is nodejs different from web javascript</li></a>
+    <a href="#Front-end_application_of_nodejs" class="nav-link"><li>Front-end application of nodejs</li></a>
+    <a href="#Understanding_node" class="nav-link"><li>Understanding node</li></a>
+    <a href="#Node installation" class="nav-link"><li>Node installation</li></a>
+    <a href="#Conclusion" class="nav-link"><li>Conclusion</li></a>
+  </nav>
+  </div>
+  <main id="main_doc">
+    <section class="main_sec" id="Introduction">
+      <header>Introduction</header>
+      <article>
+      <p>Node.js (Node) is an open source, cross-platform runtime environment for executing JavaScript code. Node is used extensively for server-side programming, making it possible for developers to use JavaScript for client-side and server-side code without needing to learn an additional language. Node is sometimes referred to as a programming language or software development framework, but neither is true; it is strictly a JavaScript runtime.</p>
+      <p>Node is a JavaScript runtime. It runs JavaScript files outside of a browser. There are two ways of running JavaScript code. You either have it as part of a website and run the entire website in a browser, or you run only the JavaScript file with Node.</p>
+      <p>Node.js takes the event model a bit further, It presents an event loop as a runtime construct instead of as a library. The event loop is what allows Node.js to perform non-blocking I/O operations — despite the fact that JavaScript is single-threaded — by offloading operations to the system kernel whenever possible.</p>
+      <p>Node.js is designed to build scalable network applications.</p>
+      <p>Node uses an event-driven, non-blocking I/O model, which makes it fast and lightweight. This programming model is one of the main reasons why Node has become so popular.</p>
+      <p>Node is best suited for building software and applications that require real-time, synchronous interactions such as chat apps and websites. Yet it also has other uses and benefits which make it popular among developers, as well, all contributing to its popularity.</p>
+      <p>Code written for the Node environment does not follow the traditional model of receive, process, send, wait and receive found in other systems. Instead, Node implements an event loop that processes incoming requests as they stack up in the event queue, handling small requests one after the other without waiting for responses.</p>
+    </article>
+    </section>
+    <section class="main_sec" id="Non-blocking_in_node">
+      <header>Non-blocking in node</header>
+      <article>
+      <p>This is the main feature of Node. You need to understand how I/O operations in Node are performed asynchronously, with the lines of code adhering to a non blocking pattern</p>
+      <ul>
+        <li>Give Node instructions (a function) to execute.</li>
+        <li>Give the function some arguments.</li>
+        <li>Give Node a callback with your function.</li>
+        <li>Node will proceed to take instructions from other lines after yours.</li>
+        <li>When your function has been computed, Node will call your callback with the result of the computation.</li>
+      </ul>
+    </article>
+    </section>
+    <section class="main_sec" id="Asynchronous_programming">
+      <header>Asynchronous programming</header>
+      <article>
+      <p>Asynchronous programming, refers to code that doesn’t execute in sequence. These functions are performed not according to the sequence they are defined inside a program but only when certain conditions are met.</p>
+      <p>These functions do not run line by line but only when they are required to run, irrespective of the function’s declaration.</p>
+      <p>Note: Asynchronous functions will run and execute only after all the synchronous functions have been executed. Until then, they will be processed in the background.
+        <br> Here's an example of an asynchronous program using the setTimeout method:
+      </p>
+      <code>
+        console.log("Start of script");
 
+        setTimeout(function() {
+          console.log("First timeout completed");
+        }, 2000);
+        
+        console.log("End of script");
+      </code>
+      <p>
+        In the example above, the <em> setTimeout </em> method executes a function after a specified time. The function passed to setTimeout will be executed asynchronously, which means that the program will continue to execute the next line of code without waiting for the timeout to complete.
+        <br> When you run the code, the output will be:
+      </p>
+      <code>
+        Start of script
+        End of script
+        First timeout completed
+      </code>
+      <p>
+        A callback function is a function that is passed as an argument to another function, and it is executed after the first function has finished running. It's commonly used in JavaScript to handle asynchronous operations like fetching data from a server, waiting for a user's input, or handling events.
+        <br> Here is a simple example of how you can use a callback function to handle an asynchronous operation:</p>
+        <code>
+          // Declare function
+          function fetchData(callback) {
+            setTimeout(() => {
+              const data = {name: "John", age: 30};
+              callback(data);
+            }, 3000);
+          }
+          
+          // Execute function with a callback
+          fetchData(function(data) {
+            console.log(data);
+          });
+          
+          console.log("Data is being fetched...");
+        </code>
+      </article>
+      </section>
+    <section class="main_sec" id="Event_loop">
+      <header>Event loop</header>
+      <article>
+      <p>Node.js uses a non-blocking event-loop system that provides excellent scalability and allows the server to respond to requests quickly.</p>
+      <p>The event loop is what allows Node.js to perform non-blocking I/O operations — despite the fact that JavaScript is single-threaded — by offloading operations to the system kernel whenever possible.
+        <br>
+        Node.js is designed to build scalable network applications.
+        <br>
+        Event loop in JavaScript is a mechanism through which the ‘calls waiting for execution’ in the callback queue/job queue can be put on the call stack. For any event from the callback queue/job queue to come to call stack, the call stack will have to be empty.</p>
+      </article>
+      </section>
+    <section class="main_sec" id="Package_management">
+      <header>Package management</header>
+      <article>
+      <p>Node packages are a convenient way to share modules between Node developers. The service npm is the default package manager for Node, and it ships with an installation of Node. npm allows access to the hundreds of thousands of open-source packages available.</p>
+    </article>
+    </section>
+    <section class="main_sec" id="Is_nodejs_different_from_web_javascript">
+      <header>Is nodejs different from web javascript</header>
+      <article>
+      <p>JavaScript is a scripting language that may be used in web browsers. Node.js, on the other hand, is a JavaScript interpreter or execution environment that includes a large number of necessary libraries and other components. JavaScript is a single defining programming language that can operate in any browser using the default browser environment. It’s a powerful language that’s typically utilized in a web application for any type of verification.</p>
+      <p>Node.js also contains a large number of related libraries, which we often use in javascript for general-purpose programming. It’s a type of interpreter or environment that can represent JavaScript and run any JavaScript program. It mostly assists us in doing non-blocking operations such as obtaining operating system-specific information such as certificate or hardware data. It allows us to utilize JavaScript in ways other than the browser, such as writing, executing, or constructing a shell script, using backend services, or running on hardware.
+      <br>
+      With npm you can install JavaScript libraries on your computer globally or specifically for a project.
+      </p>
+    </article>
+    </section>
+    <section class="main_sec" id="Front-end_application_of_nodejs">
+      <header>Front-end application of nodejs</header>
+      <article>
+      <ol>
+        <li>Code Processors: Code processors are required for displaying text in the browser. The HTML and CSS files that we receive are usually minimized in size by removing all the unnecessary characters for faster rendering and transmission. The pre-processors help the browser in rendering the files. Node.js enables us to code these processors in JS, thus allowing larger flexibility and customizability.</li>
+        <li>Code Linters: A linter is a program that helps us identify and correct issues in our codebase. Issues related to syntax, certain custom standards specified by the development team, and programming errors can be identified using linters. Custom linters enhance the overall efficiency of the dev team at a company. One such example is the ESLint written in Node.js. Linters help out with interpreted languages, such as JavaScript, since the compilation step does not exist. For more information on Linting in Node.js using ESLint click on this article.</li>
+      </ol>
+      <p>With the help of a linter, errors are caught while coding. The list of errors can be found at the official documentation for ESLint. Custom linters can be built on top of the ESLint. The Airbnb configuration, developed by Airbnb for internal software development, is open source. It is used by a majority of JS developers across the globe.</p>
+      <ol>
+        <li>Module Bundlers: Module bundlers are programs that take in various code files and bundles them into a single file. Such programs are usually included with Web frameworks like React. Webpack is another module bundler, it is a static module bundler built on top of Node.js.</li>
+        <li>Styling: Styling of webpages is usually done with CSS. Packages such as styled-components have made styling very easy. Styled-components is a library written for React.js. It allows easier integration of styling with JS, resulting in more efficient styling code for user interaction.</li>
+        <li>Packages: npm offers many packages to smoothen the process of development. For example, we can access components like text editors, color pickers, authentication components, etc. from npm. Building the frontend is as simple as collecting a bunch of required components and stitching them together to create a beautiful UI.</li>
+      </ol>
+    </article>
+    </section>
+    <section class="main_sec" id="Understanding_node"> 
+      <header>Understanding node</header>
+      <article>  
+      <p>Node.js is an open source project designed to help you write JavaScript programs that talk to networks, file systems or other I/O (input/output, reading/writing) sources. That’s it! It is just a simple and stable I/O platform that you are encouraged to build modules on top of.
+          <br> What are some examples of I/O? Here is a diagram I found of an application made with node that shows many I/O sources:
+          <img src="images/node.webp" alt="Node showing many I/O sources;">
+        </p>
+        <p>It is okay If you don’t understand all of the different things in the diagram. The point is to show that a single node process (the hexagon in the middle) can act as the broker between all of the different I/O endpoints (orange and purple represent I/O).
+          <br> Usually building these kinds of systems is either:
+        </p>
+        <ul>
+          <li>difficult to code but yields super fast results </li>
+          <li>easy to code but not very speedy</li>
+          <li>Node’s goal is to strike a balance between these two: relatively easy to understand and use and fast enough for most use cases.</li>
+        </ul>
+          <p>Node isn’t either of the following:</p>
+          <ul>
+            <li>A web framework</li>
+            <li>A programming language</li>
+          </ul>
+          <p>Instead, node is somewhere in the middle. It is:</p>
+          <ul>
+            <li>Designed to be simple and therefore relatively easy to understand and use</li>
+            <li>Useful for I/O based programs that need to be fast and/or handle lots of connections</li>
+          </ul>
+          <p>At a lower level, node can be described as a tool for writing two major types of programs:</p>
+          <ul>
+            <li>Network programs using the protocols of the web: HTTP, TCP, UDP, DNS and SSL</li>
+            <li>Programs that read and write data to the filesystem or local processes/memory</li>
+          </ul>
+          <p>What is an “I/O based program”? Here are some common I/O sources:</p>
+          <ul>
+            <li>Databases (e.g. MySQL, PostgreSQL, MongoDB, Redis, CouchDB)</li>
+            <li>APIs (e.g. Twitter, Facebook, Apple Push Notifications)</li>
+            <li>HTTP/WebSocket connections (from users of a web app)</li>
+            <li>Files (image resizer, video editor, internet radio)</li>
+          </ul>
+          <p>Node does I/O in a way that is asynchronous which lets it handle lots of different things simultaneously. For example, if you go down to a fast food joint and order a cheeseburger they will immediately take your order and then make you wait around until the cheeseburger is ready. In the meantime they can take other orders and start cooking cheeseburgers for other people. Imagine if you had to wait at the register for your cheeseburger, blocking all other people in line from ordering while they cooked your burger! This is called blocking I/O because all I/O (cooking cheeseburgers) happens one at a time. Node, on the other hand, is non-blocking, which means it can cook many cheeseburgers at once.</p>
+        </article>
+        </section>
+    <section class="main_sec" id="Node_installation">
+      <header>Node installation</header>
+      <article>
+      <ul>
+        <li>Using website</li>
+      </ul>
+      <ol>
+        <li>You can visit the link <a href="https://nodejs.org/en/"> Download Node </a> and download LTS version.</li>
+        <li>After installing the node you can check your node version in command prompt using command..</li>
+      </ol>
+      <code>~ $node — version</code>
+    </section>
+    <section class="main_sec" id="How_to_run_your_project">
+      <p>
+        Now that we have Node installed we can install a bundler. What is a bundler? A bundler is a tool that takes all your files and turns them into a neat package that you will be able to run in the browser.
+        <br>
+        Currently, the most used bundler is webpack. Webpack is a very powerful tool with plenty of configuration options. But these many options are also its weakness. Setting it up is not an easy thing if you are new to it.
+        <br>
+        Another great option that recently gained popularity is Parcel. Parcel has similar features as webpack. In some ways, it’s even better.
+        <br>
+        To install Parcel you need to run a command in your terminal. We are going to use npm, node package manager, to install it. npm is a tool that comes with Node. If you installed Node you have npm as well.
+        <br>
+        <code> npm Parcel</code>
+        <br> 
+        With npm you can install JavaScript libraries on your computer globally or specifically for a project.
+      </p>
+    </article>
+    </section>
+    <section class="main_sec" id="Conclusion">
+      <header>Conclusion</header>
+      <article>
+      <p>Node.js is sometimes misunderstood by developers as a backend framework that is exclusively used to construct servers. This is not the case; Node.js can be used on the frontend as well as the backend. The event-driven, non-blocking nature of Node.js frameworks is one of the reasons it is a popular choice for developers designing a flexible and scalable backend.</p>
+    </article>
+    </section>
+  </main>
+</body>
+<script>
+  
+</script>
 </html>
